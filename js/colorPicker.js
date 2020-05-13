@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { tr } from './translation';
 import { KEYS } from './utils';
 
@@ -44,14 +45,15 @@ export default class ColorPicker {
   constructor(main, callback) {
     this.callback = callback;
     this.main = main;
-    this.w = 180;
-    this.h = 150;
+    this.w = 250;
+    this.h = 250;
     const w = this.w;
     const h = this.h;
+
     this.lightPosition = this.w - 1;
     this.wrapper = main.wrapper.querySelector('.ptro-color-widget-wrapper');
     this.input = main.wrapper.querySelector('.ptro-color-widget-wrapper .ptro-color');
-    this.pipetteButton = main.wrapper.querySelector('.ptro-color-widget-wrapper button.ptro-pipette');
+
     this.closeButton = main.wrapper.querySelector('.ptro-color-widget-wrapper button.ptro-close-color-picker');
     this.canvas = main.wrapper.querySelector('.ptro-color-widget-wrapper canvas');
     this.ctx = this.canvas.getContext('2d');
@@ -70,30 +72,36 @@ export default class ColorPicker {
     this.canvasLight.setAttribute('height', `${20}`);
     this.canvasAlpha.setAttribute('width', `${w}`);
     this.canvasAlpha.setAttribute('height', `${20}`);
-    const palette = this.ctx.createLinearGradient(0, 0, w, 0);
-    palette.addColorStop(1 / 15, '#ff0000');
-    palette.addColorStop(4 / 15, '#ffff00');
-    palette.addColorStop(5 / 15, '#00ff00');
-    palette.addColorStop(9 / 15, '#00ffff');
-    palette.addColorStop(12 / 15, '#0000ff');
-    palette.addColorStop(14 / 15, '#ff00ff');
-    this.ctx.fillStyle = palette;
-    this.ctx.fillRect(0, 0, w, h);
+
+    const colors = [
+      'rgb(0, 255, 0)',
+      'rgb(255, 0, 0)',
+      'rgb(0, 0, 255)',
+      'rgb(255, 255, 255)',
+      'rgb(0, 0, 0)',
+      'rgb(122, 122, 122)',
+    ];
+
+    let counter = 0;
+    for (let y = 0; y < 3; y += 1) {
+      for (let x = 0; x < 2; x += 1) {
+        // set random coloor
+        this.ctx.fillStyle = colors[counter];
+        counter += 1;
+        // draw tile
+        this.ctx.fillRect(y * (this.w / 3), x * (this.h / 2), (w / 3), (h / 2));
+      }
+    }
 
     const darkOverlay = this.ctx.createLinearGradient(0, 0, 0, h);
     darkOverlay.addColorStop(0, 'rgba(0, 0, 0, 0)');
     darkOverlay.addColorStop(0.99, 'rgba(0, 0, 0, 1)');
     darkOverlay.addColorStop(1, 'rgba(0, 0, 0, 1)');
-    this.ctx.fillStyle = darkOverlay;
-    this.ctx.fillRect(0, 0, w, h);
+    // this.ctx.fillStyle = darkOverlay;
+    // this.ctx.fillRect(0, 0, w, h);
 
     this.closeButton.onclick = () => {
       this.close();
-    };
-    this.pipetteButton.onclick = () => {
-      this.wrapper.setAttribute('hidden', 'true');
-      this.opened = false;
-      this.choosing = true;
     };
 
     this.input.onkeyup = () => {
@@ -293,10 +301,10 @@ export default class ColorPicker {
           '<span class="ptro-color-alpha-regulator ptro-bordered-control"></span>' +
           '<div class="ptro-colors"></div>' +
           '<div class="ptro-color-edit">' +
-            '<button type="button" class="ptro-icon-btn ptro-pipette ptro-color-control" style="float: left; margin-right: 5px">' +
-              '<i class="ptro-icon ptro-icon-pipette"></i>' +
+            '<button type="button" class="ptro-icon-btn ptro-pipette ptro-color-control" style="float: left; margin-right: 5px; display:none">' +
+              '<i class="ptro-icon ptro-icon-pipette" style="display:none;"></i>' +
             '</button>' +
-            '<input class="ptro-input ptro-color" type="text" size="7"/>' +
+            '<input class="ptro-input ptro-color" type="text" size="7" style="display:none"/>' +
             '<button type="button" class="ptro-named-btn ptro-close-color-picker ptro-color-control" >' +
             `${tr('close')}</button>` +
           '</div>' +

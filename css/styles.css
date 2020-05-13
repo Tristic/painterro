@@ -268,7 +268,7 @@ div.ptro-pallet {
 
 .ptro-wrapper .ptro-pallet,
 .ptro-wrapper .ptro-resize-widget{
-    width: 200px;
+    width: 300px;
     padding: 10px;
     z-index: 100;
     box-sizing: border-box;
@@ -369,11 +369,12 @@ div.ptro-color-widget-wrapper {
 .ptro-wrapper .ptro-color-widget-wrapper .ptro-canvas-light,
 .ptro-wrapper .ptro-color-widget-wrapper .ptro-canvas-alpha {
     margin-top: 10px;
+    display: none;
 }
 
 span.ptro-color-light-regulator,
 span.ptro-color-alpha-regulator {
-    display: block;
+    display: none;
     margin-top: -5px;
     margin-left: 5px;
     position: absolute;
@@ -391,7 +392,7 @@ span.ptro-color-alpha-regulator {
 
 .alpha-checkers {
     background-image: url("checkers.svg");
-    display: block;
+    display: none;
     width: 100%;
     height: 15px;
     background-size: 10px 10px;
