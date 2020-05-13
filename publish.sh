@@ -3,8 +3,8 @@
 # Auto-release script for https://github.com/devforth/painterro
 # Creates new release, builds assets and performs publishing to github and npm
 
-GH_USER=ivictbor
-GH_REPO_USER=devforth
+GH_USER=tristic
+GH_REPO_USER=tristic
 GH_PATH=`cat ~/.ghpass`
 GH_REPO=painterro
 GH_TARGET=master
