@@ -203,6 +203,7 @@ export default class ColorPicker {
       this.alphaSelecting = true;
       this.getAlphaAtClick(e);
     }
+    this.close();
     return false;
   }
 
