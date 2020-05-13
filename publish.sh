@@ -3,8 +3,8 @@
 # Auto-release script for https://github.com/devforth/painterro
 # Creates new release, builds assets and performs publishing to github and npm
 
-GH_USER=tristic
-GH_REPO_USER=tristic
+GH_USER=Tristic
+GH_REPO_USER=Tristic
 GH_PATH=`cat ~/.ghpass`
 GH_REPO=painterro
 GH_TARGET=master
@@ -35,7 +35,7 @@ cd ..
 git add -u
 git commit -m "$VERSION"
 git push
-npm publish
+# npm publish
 
 res=`curl --user "$GH_USER:$GH_PATH" -X POST https://api.github.com/repos/${GH_REPO_USER}/${GH_REPO}/releases \
 -d "
