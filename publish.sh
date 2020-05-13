@@ -37,7 +37,7 @@ git commit -m "$VERSION"
 git push
 # npm publish
 
-res=`curl --user "$GH_USER:$GH_PATH" -X POST https://api.github.com/repos/${GH_REPO_USER}/${GH_REPO}/releases \
+res=`curl --user "$GH_USER" -X POST https://api.github.com/repos/${GH_REPO_USER}/${GH_REPO}/releases \
 -d "
 {
   \"tag_name\": \"v$VERSION\",
