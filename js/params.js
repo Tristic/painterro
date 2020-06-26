@@ -164,8 +164,8 @@ export function setDefaults(parameters) {
         color:${params.colorScheme.activeControlContent}}
     .ptro-wrapper{
       background-color:${params.colorScheme.backgroundColor};
-      bottom:${params.toolbarPosition === 'top' ? '0' : '40px'};
-      top:${params.toolbarPosition === 'top' ? '40px' : '0'};
+      bottom:${params.toolbarPosition === 'top' ? '0' : '64px'};
+      top:${params.toolbarPosition === 'top' ? '64px' : '0'};
     }
     .ptro-bar {
       ${params.toolbarPosition === 'top' ? 'top' : 'bottom'}: 0;

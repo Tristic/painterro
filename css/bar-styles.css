@@ -65,7 +65,7 @@ select.ptro-input[data-id='fontName'] {
 }
 
 .ptro-bar {
-    height: 40px;
+    height: 64px;
     bottom: 0;
     position: absolute;
     width: 100%;
